@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//给String的原型对象添加方法
+			//toAscii(),装换成Ascii
+			//fromAscii()反编译
+			
+			//字符转Ascii
+			String.prototype.toAscii=function(){
+				var result='';
+				//遍历字符串，获取每个字符的阿斯玛
+				for (var i=0;i<this.length;i++) {
+					
+					result+=this.charCodeAt(i)+',';
+				}
+				return result.slice(0,-1);//去掉最后为逗号
+			}
+			console.log('a无chr'.toAscii());
+			//Ascii转字符
+			String.prototype.formAscii=function(){
+				var result='';
+				//分割字符串成数组
+				var arr=this.split(',');
+				arr.forEach(function(num,idx){
+					result+=String.fromCharCode(num);
+				})
+				
+				return result;
+			}
+			console.log('98,97,99,67,35'.formAscii())
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

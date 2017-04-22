@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{width: 200px;height: 100px;background: #f45672;}
+		</style>
+		<script>
+		onload=function(){
+			var oBox=document.getElementById("box");
+			var span=document.getElementById("sp");
+			//定时器
+//			var timer=setInterval(function(){
+//				span.innerHTML--;
+//				if (span.innerHTML<0) {
+//					oBox.style.display="none";
+//					clearInterval(timer);
+//				}
+//			},1000)
+			
+			//延时器
+			var timeOut=setTimeout(out,1000);
+			function out(){
+				span.innerHTML--;
+				if (span.innerHTML<0) {
+					oBox.style.display="none";
+				} else{
+					setTimeout(out,1000);
+				}
+			}
+			
+		}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">广告在<span id="sp">5</span>秒后关闭</div>
+	</body>
+</html>

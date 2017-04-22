@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+			<script type="text/javascript">
+				onload=function(){
+					var box=document.getElementById("box")
+					var box1=document.getElementById("box1");//红色
+					var box2=document.getElementById("box2");//蓝色
+					//设置远动的变化量
+					//红色
+					var tmpX=4;//x 轴
+					var tmpY=8;//y 轴
+					//蓝色
+					var tmpXl=6;
+					var tmpYl=13;
+					//设置定时器
+					setInterval(function(){
+						
+					if (parseInt(box1.offsetLeft)+parseInt(box1.style.width)>parseInt(box.style.width)||parseInt(box1.offsetLeft)+parseInt(box1.style.width)<0) {
+						tmpX*=-1;
+					}
+					if (parseInt(box1.offsetTop)+parseInt(box1.style.height)>parseInt(box.style.height)||parseInt(box1.offsetTop)+parseInt(box1.style.height)<0) {
+						tmpY*=-1;
+					}
+					if (parseInt(box2.offsetLeft)+parseInt(box2.style.width)>parseInt(box.style.width)||parseInt(box2.offsetLeft)+parseInt(box2.style.width)<0) {
+						tmpXl*=-1;
+					}
+					if (parseInt(box2.offsetTop)+parseInt(box2.style.height)>parseInt(box.style.height)||parseInt(box2.offsetTop)+parseInt(box2.style.height)<0) {
+
+						tmpYl*=-1;
+					}// 判断到边界就返回；
+						box1.style.left=parseInt(box1.offsetLeft)+tmpX+"px";//红色x
+						box1.style.top=parseInt(box1.offsetTop)+tmpY+"px";//红色y
+						box2.style.left=parseInt(box2.offsetLeft)+tmpXl+"px";//蓝色x
+						box2.style.top=parseInt(box2.offsetTop)+tmpYl+"px";//蓝色y
+					},1)
+					
+					
+				}
+				
+				
+			</script>
+	</head>
+	<body>
+		<div id="box" style="width: 500px;height: 500px;background: #ccc;position: absolute;left: 10px;top: 10px;">
+			<div id="box1"style="width: 20px;height: 20px;background: red;position: absolute;left: 10px;top: 10px;"></div>
+			<div id="box2"style="width: 20px;height: 20px;background: darkblue;position: absolute;left: 10px;top: 10px;"></div>
+		</div>
+	</body>
+</html>

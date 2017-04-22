@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				border: 1px solid #CCCCCC;
+			}
+			tr{
+				border: 1px solid orange;
+			}
+			td{
+				width: 50px;
+				height: 30px;
+			}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				
+				var btn=document.getElementsByTagName("button")[0];
+				var row=document.getElementById("row");
+				var line=document.getElementById("line");
+				
+				//点击事件给btn绑定
+				btn.onclick=function(){
+					var table=document.createElement("table");
+					var rowVal=row.value;
+					var lineVal=line.value;
+					
+					console.log(color);
+					for (var i=1;i<=rowVal;i++) {
+						var tr=table.insertRow(0);
+						for (var j=1;j<=lineVal;j++) {
+							var td=tr.insertCell(0);
+							
+						}
+						
+					}
+					document.body.appendChild(table);
+					var td=document.getElementsByTagName("td");
+					for (var k=0;k<td.length;k++) {
+						var color="rgb("+(parseInt(Math.random()*256))+","+(parseInt(Math.random()*256))+","+(parseInt(Math.random()*256))+")";
+						td[k].style.background=color;
+					}
+					
+					
+					
+					
+				}
+				
+				
+			}
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" id="row" placeholder="只能输入数字"/>行<input type="text" id="line" placeholder="只能输入数字"/>列
+		<button>生成随机色表格</button>
+	</body>
+</html>

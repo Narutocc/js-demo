@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 400px;
+				height: 200px;
+				border: 1px solid red;
+				
+			}
+			.active{
+				background: olive;
+				color: white;
+			}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				/*
+				 1.点击的时候 点到哪个按钮相对应的的 内容就显示，其余的隐藏；
+				 2.点到哪个按钮，那个按钮就添加样式
+				 */
+				
+				
+				var box=document.getElementsByTagName("div");
+				var btn=document.getElementsByTagName("button");
+				
+				for (var i=0;i<box.length;i++) {		
+						box[i].style.display="none";//首先全部隐藏
+						box[0].style.display="block";	//把第一个显示		
+				}
+				for (var j=0;j<btn.length;j++) {
+					
+					// 将 j 的值保存到 按钮对象 中自定义属性index中
+					btn[j].index=j;
+					
+					btn[j].onclick=function(){
+						
+						for (var k=0;k<box.length;k++) {
+							box[k].style.display="none";//先全部隐藏
+						}
+						
+						box[this.index].style.display="block";//后显示点击的那个
+						for (var q=0;q<btn.length;q++) {
+							btn[q].className="";//     把所有样式清空
+						}
+						btn[this.index].className="active";// 点击的这个设置样式
+						
+					}
+					
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button class="active">第一句</button>
+		<button>第二句</button>
+		<button>第三句</button>
+		<button>第四句</button>
+		<div >
+			千淘万漉虽辛苦
+		</div>
+		<div >
+			吹尽狂沙始到金
+			
+		</div>
+		<div >
+			不要人夸颜色好
+		</div>
+		<div >
+			只留清气满乾坤
+			
+		</div>
+	</body>
+</html>

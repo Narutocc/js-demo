@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			ul,li{list-style: none;}
+			#list{margin: 200px auto;position: relative;width: 500px;}
+			#list li{width: 90px;height:39px;border: 1px solid gold;float: left;}
+			#list .bg{width: 93px;height: 5px;background: red;padding: 0;position: absolute;left: 0;top: 34px;}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				var oList=document.getElementById("list");
+				var oLi=oList.getElementsByTagName("li");
+				
+				var oBg=oLi[oLi.length-1];//移动滑块
+				//前4个li 鼠标移入事件
+				for (var i=0;i<oLi.length;i++) {
+					oLi[i].onmouseover=function(){
+						starMove(oBg,this.offsetLeft);
+					}
+				}
+				//弹性动画
+				function starMove(obj,iTarget){
+					var speed=0;
+					//每次进来先清除旧的定时器
+					clearInterval(obj.timer)
+					//创建新的定时器
+					obj.timer=setInterval(function(){
+						//获取当前值
+						var current=obj.offsetLeft;
+						//速度
+						speed+=(iTarget-current)/5;
+						speed*=0.7;//弹性系数
+						
+						//3.判断临界值,
+						//当速度很小，并且非常接近目标值的时候，停止动画
+						if (Math.abs(speed)<1&&Math.abs(iTarget-current)<1) {
+							obj.style.left=iTarget+"px";
+							clearInterval(obj.timer);
+							return;
+						}
+						
+						
+						
+						obj.style.left=current+speed+"px"
+					},30)
+						
+						
+					
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>首页首页</li>
+			<li>关于我们</li>
+			<li>联系我们</li>
+			<li>客服服务</li>
+			<li class="bg"></li>
+		</ul>
+	</body>
+</html>

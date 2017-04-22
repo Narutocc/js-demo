@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1{
+				position: absolute;border: 1px solid #000;
+			}
+			.box2{
+				position: absolute;border: 2px solid red;
+			}
+			.box3{
+				position: absolute;left: 250px;top: 100px;
+			}
+			div p{
+				background: #666;position: absolute;height: 20px;margin: 0;padding: 0;
+			}
+			p span{
+				position: absolute;right: 0;top: 0;text-align: right;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				//构造函数
+				function Cpm(opt){
+					//宽高
+					this.width=opt.width || 200;
+					this.height=opt.height ||250;
+					//位置
+					this.left=opt.left;
+					this.top=opt.top;
+					//是否拖动
+					this.drag=opt.drag===undefined ? true:opt.drag;
+					//是否关闭窗口
+					this.shut=opt.shut===undefined ? true:opt.shut;
+					//关闭按钮
+					this.shutBtn=opt.shutBtn;
+					//内容
+					this.innerHTML=opt.innerHTML;
+					//描述方法
+					//ClassName
+					this.className=opt.className;
+					
+					this.init=function(){
+						var self=this;
+						//创建 弹窗口
+						var cpm=document.createElement('div');
+						var p=document.createElement('p');
+						var span=document.createElement('span')
+						cpm.innerHTML=this.innerHTML;
+						cpm.className=this.className;
+						
+						cpm.style.left=this.left+'px';
+						cpm.style.top=this.top+'px';
+						
+						cpm.style.width=this.width+'px';
+						cpm.style.height=this.height+'px';
+						
+						span.innerHTML='&times';
+						p.style.width=this.width+'px';
+						
+						p.appendChild(span);
+						cpm.appendChild(p);
+						document.body.appendChild(cpm);
+						
+						this.ele=cpm;
+						
+						cpm.onmousedown=function(e){
+							var self=this
+							var startX=e.offsetX;
+							var startY=e.offsetY;
+							document.onmousemove=function(evt){
+								self.style.left=evt.clientX - startX+'px';
+								self.style.top=evt.clientY - startY+'px';
+							}
+						
+						}
+						
+						document.onmouseup=function(){
+							document.onmousemove=null;
+						}
+						//点击隐藏
+						if(this.shut){
+							
+							span.onclick=function(){
+								cpm.style.display='none';
+							}
+						}
+					}
+					/*this.move=function(x,y){
+						this.left=x;
+						this.top=y;
+						this.ele.style.left = this.left + 'px';
+						this.ele.style.top = this.top + 'px';
+					}*/
+					
+					/*this.Stop=function(){
+						document.onmousemove=null;
+					}*/
+				}
+				var box1=new Cpm({
+					left:100,
+					top:50,
+					shut:true,
+					className:'box1',
+					innerHTML:'八戒你瘦了1'
+				}).init();
+				var box2=new Cpm({
+					left:200,
+					top:100,
+					shut:false,
+					className:'box2',
+					innerHTML:'悟空你傻了吧'
+				}).init();
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

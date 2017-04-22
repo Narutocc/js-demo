@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			onload=function(){
+				var oBox=document.getElementById("box");
+				var oBox1=document.getElementById("box1");
+				var span=document.getElementById("spn");
+				oBox1.onmousedown=function(evt){
+					var oEvent=evt||event;
+					var x=oEvent.clientX-parseInt(oBox.style.left);
+					var y=oEvent.clientY-parseInt(oBox.style.top);
+					document.onmousemove=function(evt){
+						var oEvent=evt||event;
+						oBox.style.left=oEvent.clientX-x+"px";
+						oBox.style.top=oEvent.clientY-y+"px";
+					}
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+					}
+					
+				}
+				span.onclick=function(){
+					oBox.style.display="none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 200px;height: 300px;background: darkred;position: absolute;left: 10px;top: 10px;">
+			<div id="box1" style="width: 200px;height: 20px;background: blueviolet;">
+				<span id="spn" style="cursor: pointer;">
+					关闭
+				</span>
+			</div>
+		</div>
+	</body>
+</html>

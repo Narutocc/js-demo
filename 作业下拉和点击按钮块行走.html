@@ -1,0 +1,83 @@
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{magrin:0;padding: 0;}
+			ul{margin: 0;}
+			li{background: black;border: 1px dashed #fff;color: #fff;}
+			li:hover{background: whitesmoke;}
+		</style>
+		<script type="text/javascript">
+		//有一个红色div块，有四个button, 上下左右, 当我点击对应的按钮,这个块就进行对应的行走
+			onload=function(){
+				var btn=document.getElementsByTagName("button");
+				var box=document.getElementById("box");
+				var zou=10;
+				btn[0].onclick=function(){
+					
+					box.style.left=box.offsetLeft+-zou+"px";
+				}
+				btn[1].onclick=function(){
+					
+					box.style.top=box.offsetTop+-zou+"px";
+				}
+				btn[2].onclick=function(){
+					
+					box.style.left=box.offsetLeft+zou+"px";
+				}
+				btn[3].onclick=function(){
+					
+					box.style.top=box.offsetTop+zou+"px";
+				}
+				   
+//			     下拉菜单
+				var oBox=document.getElementById("box2")
+				var inp=document.getElementById("inp");
+				var oLi=oBox.getElementsByTagName("li");
+				var oUl=document.getElementById("ul");
+				inp.onmouseover=function(){
+					oUl.style.display="block";
+					
+				}
+				inp.onmouseout=function(){
+					oUl.style.display="none";
+				}
+				
+				oUl.onmouseover=function(){
+					oUl.style.display="block";
+				}
+				oUl.onmouseout=function(){
+					oUl.style.display="none";
+				}
+				
+					for(var i=0;i<oLi.length;i++){
+						oLi[i].onclick=function(){
+							inp.value=this.innerHTML;
+							
+						}
+						
+					}
+
+				
+			}
+		</script>
+		
+	</head>
+	<body>
+		<button>给我往左</button><button>给我往上</button><button>给我往右</button><button>给我往下</button>
+		<div id="box" style="background: indianred;width: 100px;height: 100px;position: absolute;left: 40px;top:40px"></div>
+		
+		<div id="box2" style="background: #ccc;width: 200px;height: 300px;position: absolute;top:200px">
+			<input id="inp" type="text" placeholder="请选择游戏名称"/>
+			<ul id="ul" style="width: 153px;list-style: none;display: none;">
+				<li>魔兽世界</li>
+				<li>传奇世界</li>
+				<li>英雄联盟</li>
+				<li>罗亚傻子</li>
+				<li>天天敲代码</li>
+			</ul>
+		</div>
+	</body>
+</html>

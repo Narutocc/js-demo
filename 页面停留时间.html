@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			onload=function(){
+				var time=document.getElementById("timen");
+				//获取进入的时间
+				var now=new Date();
+				//用定时器记录用时
+				setInterval(function(){
+					//获取定时器每次走后的时间
+					var xTime=new Date();
+					//时间相减必须先转成毫秒
+					var offset=Math.round((xTime.getTime()-now.getTime())/1000);
+					
+					var s=offset%60;
+					var min=parseInt(offset/60);
+					var hours=parseInt(min/60);
+					time.innerHTML="在页面停留了"+hours+"时"+min+"分"+s+"秒"
+					
+				},1000)
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="timen">
+			
+		</div>
+	</body>
+</html>

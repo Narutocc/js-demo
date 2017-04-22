@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 20px;
+			}
+		</style>
+		<script type="text/javascript" src="starMoveJy.js">
+			
+		</script>
+		<script type="text/javascript">
+			onload=function(){
+				var box=document.getElementById("box");
+				var btn=document.getElementById("btn")
+				btn.onclick=function(){
+					annimei(box,"left",800)
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<button id="btn">移动</button>
+	</body>
+</html>

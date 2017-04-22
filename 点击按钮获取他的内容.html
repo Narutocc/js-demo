@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			onload=function(){
+				var allBtn=document.getElementsByTagName("button");
+				for (var i=0;i<allBtn.length;i++) {
+					allBtn[i].onclick=function(){
+						alert(this.innerHTML);
+					}
+				}
+			}
+		var s=location.seach;
+		document.write(s);
+		</script>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<button>按钮3</button>
+		<button>按钮4</button>
+		<button>按钮5</button>
+		<button>按钮6</button>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 80px;
+				height: 80px;
+				border-radius:100%;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				
+				document.onmousemove=function(e){
+					var img=document.getElementsByTagName("img");
+					//第一个的位置
+					img[0].style.left=e.clientX+"px";
+					img[0].style.top=e.clientY+"px";
+					//下一个的位置等于当前的位置
+					for(var i=img.length-1;i>0;i--){
+						img[i].style.left=img[i-1].style.left;
+						img[i].style.top=img[i-1].style.top;
+					}
+					
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="img/001.jpeg"/> 
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		<img src="img/001.jpeg"/>
+		
+	</body>
+</html>

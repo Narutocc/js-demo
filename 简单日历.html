@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* { padding: 0; margin: 0; }
+			ul,li{list-style:none}
+			ul{background: #b5b5b5;height:350px;width:180px;margin-left:40%;}
+			li{width:30px;height:50px;float:left;margin:10px;cursor:pointer;}
+			#box{width:180px;height:80px;background:#b7b7b7;margin-left:40%}
+			.active{background: #fff;color: red;}
+		</style>
+		<script>
+			
+			onload=function(){
+				var ull=document.getElementById("ull");
+				var lii=ull.getElementsByTagName("li");
+				var Obox=document.getElementById("box");
+				lii[new Date().getMonth()].className="active";//获取当前日期的月份为点击状态
+				Obox.innerHTML=(new Date().getMonth())+1+"月份你好";
+				for (var i=0;i<lii.length;i++) {
+					lii[i].a=i;//给每个i添加自定义属性
+					
+					lii[i].onclick=function(){
+						var index=this.a;
+						Obox.innerHTML=this.a+1+"月份你好";
+						for (var j=0;j<lii.length;j++) {
+							if (this==lii[j]) {
+								this.className="active";
+							} else{
+								lii[j].className="";
+							}
+						}
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<ul id="ull">
+			<li><h2>1</h2><span>Jan</span></li>
+			<li><h2>2</h2><span>Jan</span></li>
+			<li><h2>3</h2><span>Jan</span></li>
+			<li><h2>4</h2><span>Jan</span></li>
+			<li><h2>5</h2><span>Jan</span></li>
+			<li><h2>6</h2><span>Jan</span></li>
+			<li><h2>7</h2><span>Jan</span></li>
+			<li><h2>8</h2><span>Jan</span></li>
+			<li><h2>9</h2><span>Jan</span></li>
+			<li><h2>10</h2><span>Jan</span></li>
+			<li><h2>11</h2><span>Jan</span></li>
+			<li><h2>12</h2><span>Jan</span></li>
+		</ul>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>

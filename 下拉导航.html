@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#nav {
+				background: #cdf;
+				width: 400px;
+				height: 30px;
+				
+			}
+			#nav li{
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				float: left;
+				text-align: center;
+				cursor: pointer;
+			}
+			.list{
+				width: 100px;
+				height: 0px;
+				background: blue;
+				overflow: hidden;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				var nav=document.getElementById("nav");
+				var li=nav.getElementsByTagName("li");
+				var oUl=document.getElementsByTagName("ul");
+				//遍历li，再给li添加事件
+				for (var i=0;i<li.length;i++) {
+					li[i].index=i;
+					//导航上鼠标移入事件
+				li[i].onmouseover=function(){
+					startMove(oUl[this.index+1],"height",150);
+					
+				}
+				//导航上鼠标移出事件
+				li[i].onmouseout=function(){
+					startMove(oUl[this.index+1],"height",0);
+					
+				}
+				//给2级菜单添加移入事件
+				oUl[i+1].onmouseover=function(){
+					startMove(this,"height",150);
+				}
+				oUl[i+1].onmouseout=function(){
+					startMove(this,"height",0);
+				}
+				
+				}
+				//封装下拉运动定时器函数
+				function startMove(obj,attr,iTarget){
+					//清除旧定时器
+					clearInterval(obj.timer);
+					//创建定时器
+					obj.timer=setInterval(function(){
+						//获取当前值
+						var current=parseFloat(getStyleAttribute(obj,attr));
+						current=Math.round(current);
+						//给个速度
+						var speed=(iTarget-current)/8;
+						speed=speed>0?Math.ceil(speed):Math.floor(speed);
+						//判断临界值
+						if(current==iTarget){
+							clearInterval(obj.timer);
+							return;
+						}
+						obj.style[attr]=current+speed+"px";
+						
+						
+					},30)
+					
+
+				}
+				//获取属性值的方法
+				function getStyleAttribute(obj,attr){
+					if(window.getComputedStyle){
+						return window.getComputedStyle(obj,null)[attr];
+					}
+					return obj.currentStyle(attr);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="nav">
+			<li>关于我们</li>
+			<li>bbbbbbbbbb</li>
+			<li>bbbbbbbbbb</li>
+			<li>bbbbbbbbbb</li>
+		</ul>
+		<ul class="list" style="left: 0px;">
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+		</ul>
+		<ul class="list" style="left: 100px;">
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+		</ul>
+		<ul class="list" style="left:200px;">
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+		</ul>
+		<ul class="list" style="left: 300px;">
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+			<li>aaaaaaaa</li>
+		</ul>
+	</body>
+</html>

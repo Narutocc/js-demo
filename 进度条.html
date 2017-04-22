@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				height: 50px;
+				width: 1000px;
+				border: 1px solid blue;
+			}
+			#jd{
+				height: 50px;
+				
+				background: red;
+				
+			}
+			#qq{
+				width: 400px;
+			}
+			#ww{
+				width: 400px;
+			}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				var bf=document.getElementById("bf");
+				var ww=document.getElementById("ww");
+				var qq=document.getElementById("qq");
+				
+				var time=setInterval(function(){
+					var jd=document.getElementById("jd");
+					
+						jd.style.width=parseInt(jd.style.width)+1+"%";
+						bf.innerHTML=jd.style.width;
+					if (jd.style.width=="100%") {
+						clearInterval(time);
+						ww.style.display="block";
+						qq.style.display="block";
+					}	
+					
+				},50);
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="jd" style="width: 0%;">
+				
+			</div>
+		</div><span id="bf">0%</span>
+		<marquee>你好，亲！正在为你努力加载中.....</marquee>
+		<img src="img/11.gif"id='qq' style="display: none;"/ >
+		<img src="img/22.gif" id="ww" style="display: none;"/>
+	</body>
+</html>

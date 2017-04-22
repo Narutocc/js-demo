@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			ul,li{list-style: none;}
+			ul li{width:600px;height:20px;}
+		</style>
+		<script type="text/javascript">
+		
+		onload=function(){
+			var oList=document.getElementById("list") ;
+			var oLi=oList.getElementsByTagName("li");
+			for (var i=0;i<oLi.length;i++) {
+				if (i%2==0) {
+					oLi[i].style.backgroundColor="red";
+				} else{
+					oLi[i].style.backgroundColor="black";
+				}
+			}
+		}
+
+			//简易年历, 如右图, 可以点击对应的月份, 改变下面的文字内容
+			
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li ></li>
+			<li ></li>
+			<li ></li>
+			<li ></li>
+			<li ></li>
+			<li ></li>
+		</ul>
+	</body>
+</html>

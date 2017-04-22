@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			onload=function(){
+				var oBox=document.getElementById("box");
+				//如果我按下ctrl+c变换颜色
+				var t=oBox.offsetHeight;//获取box的高
+				var b=500;
+				onkeydown=function (evt){
+					var oEvent=evt||event;
+					if (oEvent.ctrlKey&&oEvent.keyCode==65) {
+					oBox.style.backgroundColor="yellowgreen";
+					}else if(oEvent.ctrlKey&&oEvent.shiftKey&&oEvent.keyCode==67){//如果我按下ctrl + shift + r 重置颜色,回复初始颜色
+						oBox.style.background="red";
+					}if(oEvent.keyCode==40){//如果我按下向上箭头,向上移动, 同理还可以向下,左,右移动
+						oBox.style.top=oBox.offsetTop+t+"px";
+					}
+					if(oEvent.keyCode==37){//如果我按下向上箭头,向上移动, 同理还可以向下,左,右移动
+						oBox.style.left=oBox.offsetLeft+-t+"px";
+					}
+					if(oEvent.keyCode==38){//如果我按下向上箭头,向上移动, 同理还可以向下,左,右移动
+						oBox.style.top=oBox.offsetTop+-t+"px";
+					}
+					if(oEvent.keyCode==39){//如果我按下向上箭头,向上移动, 同理还可以向下,左,右移动
+						oBox.style.left=oBox.offsetLeft+t+"px";
+					}if(oEvent.ctrlKey&&oEvent.keyCode==37){//如果我按下ctrl + 上下左右,走的步数变大
+						oBox.style.left=oBox.offsetLeft+-b+"px"
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="background: red;width: 200px;height:200px;position: absolute;left:1px;top:1px;"></div>
+	</body>
+</html>
